@@ -30,4 +30,4 @@ touch src/__init__.py src/utils/__init__.py param.yaml dvc.yaml config/config.ya
 ### install src 
 ```bash
 pip install -e .
-```# DVC_DL_Tensorflow_demo
+```# git commit -m "first commit"DVC_DL_Tensorflow_dgit remote add origin https://github.com/plaban1981/DVC_DL_Tensorflow_demo.gitemo
