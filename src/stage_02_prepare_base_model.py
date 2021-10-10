@@ -31,10 +31,10 @@ def prepare_base_model(config_path, params_path):
 
     full_model = prepare_model(
         model,
-        CLASSES=params["CLASSES"],
-        freeze_all=False,
-        freeze_till=5,
-        learning_rate=params["LEARNING_RATE"]
+        CLASSES = params["CLASSES"],
+        freeze_all = False,
+        freeze_till = 5,
+        learning_rate = params["LEARNING_RATE"]
     )
 
     update_base_model_path = os.path.join(
