@@ -7,3 +7,4 @@ seaborn
 tqdm
 PyYAML
 boto3
+joblib
