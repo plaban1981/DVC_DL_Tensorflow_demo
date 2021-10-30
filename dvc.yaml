@@ -60,7 +60,6 @@ stages:
       - src/stage_04_train.py
       - src/utils/all_utils.py
       - src/utils/models.py
-      - src/utils/callbacks.py
       - src/utils/data_management.py
       - config/config.yaml
       - data

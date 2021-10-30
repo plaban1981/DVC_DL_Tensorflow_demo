@@ -26,9 +26,11 @@ def train_model(config_path, params_path):
     updated_model = artifacts["TRAINED_MODEL"]
 
 
-    train_model_dir_path = os.path.join(artifacts_dir,base_model_dir,updated_model)
+    train_model_dir_path = os.path.join(artifacts_dir,base_model_dir)
     print(train_model_dir_path)
-    model = load_full_model(train_model_dir_path)
+    model_pickle = os.listdir(train_model_dir_path)[0]
+    trained_model_path = os.path.join(artifacts_dir,base_model_dir,model_pickle)
+    model = load_full_model(trained_model_path)
 
 
     #untrained_full_model_path = os.path.join(artifacts_dir, artifacts["BASE_MODEL_DIR"], artifacts["UPDATED_BASE_MODEL_NAME"])
@@ -38,8 +40,8 @@ def train_model(config_path, params_path):
     #model.load_weights(train_model_dir_path)
     logging.info(f">>>>load trained model weights")
 
-    callback_dir_path  = os.path.join(artifacts_dir, artifacts["CALLBACKS_DIR"])
-    callbacks = get_callbacks(callback_dir_path)
+    #callback_dir_path  = os.path.join(artifacts_dir, artifacts["CALLBACKS_DIR"])
+    #callbacks = get_callbacks(callback_dir_path)
 
     _, valid_generator = train_valid_generator(
         data_dir=artifacts["DATA_DIR"],
