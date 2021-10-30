@@ -30,7 +30,7 @@ def create_and_save_checkpoint_callback(callbacks_dir, checkpoint_dir):
 
 
 def get_callbacks(callback_dir_path):
-    
+
     callback_path = [
         os.path.join(callback_dir_path, bin_file) for bin_file in os.listdir(callback_dir_path) if bin_file.endswith(".cb")
     ]
