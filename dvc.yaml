@@ -54,3 +54,21 @@ stages:
       - AUGMENTATION
     outs:
       - artifacts/model
+  evaluate:
+    cmd: python src/stage_05_evaluate.py --config=config/config.yaml --params=params.yaml
+    deps: 
+      - src/stage_04_train.py
+      - src/utils/all_utils.py
+      - src/utils/models.py
+      - src/utils/callbacks.py
+      - src/utils/data_management.py
+      - config/config.yaml
+      - data
+      - artifacts/base_model/updated_VGG16_base_model.h5
+      - artifacts/callbacks/checkpoint_cb.cb
+      - artifacts/callbacks/tensorboard_cb.cb
+    params:
+      - IMAGE_SIZE
+      - BATCH_SIZE
+      - EPOCHS
+      - AUGMENTATION
