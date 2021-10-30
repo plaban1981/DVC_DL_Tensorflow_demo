@@ -31,17 +31,17 @@ def prepare_base_model(config_path, params_path):
 
     full_model = prepare_model(
         model,
-        CLASSES = params["CLASSES"],
-        freeze_all = False,
-        freeze_till = 5,
-        learning_rate = params["LEARNING_RATE"]
+        CLASSES=params["CLASSES"],
+        freeze_all=True,
+        freeze_till=None,
+        learning_rate=params["LEARNING_RATE"]
     )
 
     update_base_model_path = os.path.join(
         base_model_dir_path,
         artifacts["UPDATED_BASE_MODEL_NAME"]
     )
-    ##log model summary into log files
+
     def _log_model_summary(full_model):
         with io.StringIO() as stream:
             full_model.summary(print_fn=lambda x: stream.write(f"{x}\n"))
@@ -65,7 +65,7 @@ if __name__ == '__main__':
     try:
         logging.info(">>>>> stage two started")
         prepare_base_model(config_path=parsed_args.config, params_path=parsed_args.params)
-        logging.info("stage two completed! base model is created >>>>>")
+        logging.info("stage two completed! base model is created >>>>>\n")
     except Exception as e:
         logging.exception(e)
         raise e
