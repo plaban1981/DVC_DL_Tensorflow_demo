@@ -71,3 +71,11 @@ stages:
       - BATCH_SIZE
       - EPOCHS
       - AUGMENTATION
+  Inference:
+    cmd: python Inference/app.py --config=config/config.yaml --params=params.yaml
+    deps: 
+      - src/utils/all_utils.py
+      - src/utils/models.py
+      - config/config.yaml
+      - artifacts/base_model/updated_VGG16_base_model.h5
+

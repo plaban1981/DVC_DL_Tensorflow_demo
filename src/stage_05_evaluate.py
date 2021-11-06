@@ -1,8 +1,8 @@
-from src.utils.all_utils import read_yaml, create_directory
+from src.utils.all_utils import read_yaml, create_directory,save_json
 from src.utils.models import load_full_model, get_unique_path_to_save_model
 from src.utils.callbacks import get_callbacks
 from src.utils.data_management import train_valid_generator
-from sklearn.metrics import roc_curve,auc,accuracy_score
+from sklearn.metrics import roc_curve,auc,accuracy_score,average_precision_score,roc_auc_score,precision_recall_curve
 import argparse
 import os
 import numpy as np
@@ -24,6 +24,7 @@ def train_model(config_path, params_path):
     artifacts_dir = artifacts["ARTIFACTS_DIR"]
     base_model_dir = artifacts['TRAINED_MODEL_DIR']
     updated_model = artifacts["TRAINED_MODEL"]
+    scores_json_path = config["metrics"]["SCORES"]
 
 
     train_model_dir_path = os.path.join(artifacts_dir,base_model_dir)
@@ -60,8 +61,11 @@ def train_model(config_path, params_path):
     fpr, tpr, _ = roc_curve(valid_generator.classes, predictions )
     roc_auc = auc(fpr, tpr)
     accuracy = accuracy_score(valid_generator.classes, predictions)
+    scores = {'roc_auc score': roc_auc,'accuracy score ': accuracy}
     logging.info(f"\n\n>>>>> roc auc value of validation data : {roc_auc}")
     logging.info(f"\n\n>>>>> validation data accuracy  : {accuracy}")
+    save_json(scores_json_path, scores)
+    
 
 
 

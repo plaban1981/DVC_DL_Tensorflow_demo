@@ -8,6 +8,12 @@ tensorflow==2.5
 tqdm==4.62.3
 joblib==1.1.0
 scipy==1.7.1
+Flask==1.0.2
+Flask-Cors==3.0.7
+future==0.17.1
+gunicorn==19.9.0
+numpy
+opencv-python==3.4.3.18
 
 # local setup installation -
 -e .

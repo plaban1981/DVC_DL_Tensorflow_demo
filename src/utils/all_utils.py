@@ -31,3 +31,9 @@ def get_timestamp(name):
     timestamp = time.asctime().replace(" ", "_").replace(":", "_")
     unique_name = f"{name}_at_{timestamp}"
     return unique_name
+
+def save_json(path, data):
+    with open(path, "w") as f:
+        json.dump(data, f, indent=4)
+
+    logging.info(f"\n\n>>>>> model scores json file saved at   : {path}")
